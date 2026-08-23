@@ -1,0 +1,258 @@
+:root {
+  /* 落ち着いたマットな配色 */
+  --bg-color: #f1f3f5;
+  --surface: #ffffff;
+  --text-main: #2b303a;
+  --text-sub: #6c757d;
+  --border-color: #e9ecef;
+  --accent-color: #3b5998;
+
+  /* 勝敗ステータスカラー */
+  --win-bg: #e6f4ea;
+  --win-text: #137333;
+  --lose-bg: #fce8e6;
+  --lose-text: #c5221f;
+  --draw-bg: #fef7e0;
+  --draw-text: #b06000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  color: var(--text-main);
+}
+
+/* メインコンテナ */
+.game-container {
+  background: var(--surface);
+  width: 100%;
+  max-width: 760px;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-main);
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  margin-top: 6px;
+}
+
+/* 2カラムレイアウト */
+.game-body {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* 左パネル: メイン対戦エリア */
+.main-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.battle-arena {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fa;
+  border: 1px solid var(--border-color);
+  padding: 24px 20px;
+  border-radius: 12px;
+}
+
+.hand-card {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-sub);
+  margin-bottom: 6px;
+}
+
+.hand-display {
+  font-size: 3.5rem;
+  line-height: 1;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vs-badge {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #adb5bd;
+  padding: 0 16px;
+  letter-spacing: 0.1em;
+}
+
+/* 結果表示 */
+.result-box {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outcome {
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.outcome.default { color: var(--text-sub); background: #f8f9fa; border: 1px solid var(--border-color); }
+.outcome.win { color: var(--win-text); background: var(--win-bg); }
+.outcome.lose { color: var(--lose-text); background: var(--lose-bg); }
+.outcome.draw { color: var(--draw-text); background: var(--draw-bg); }
+
+/* 選択ボタン */
+.btn-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.choice-btn {
+  background: var(--surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+.choice-btn .icon {
+  font-size: 2rem;
+}
+
+.choice-btn .text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.choice-btn:hover {
+  border-color: #adb5bd;
+  background-color: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+.choice-btn:active {
+  transform: translateY(0);
+  background-color: #e9ecef;
+}
+
+/* 右パネル: スコアボード */
+.side-panel {
+  background: #f8f9fa;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.side-panel h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.score-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.score-card {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-card .label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+
+.score-card .count {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.score-card.win .count { color: var(--win-text); }
+.score-card.draw .count { color: var(--draw-text); }
+.score-card.lose .count { color: var(--lose-text); }
+
+.reset-btn {
+  margin-top: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-sub);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 9px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.reset-btn:hover {
+  background: #f1f3f5;
+  color: var(--text-main);
+  border-color: #ced4da;
+}

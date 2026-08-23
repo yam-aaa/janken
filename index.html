@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>じゃんけんゲーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="game-container">
+    <header class="header">
+      <h1>じゃんけんゲーム</h1>
+      <p class="subtitle">手を選んで勝負しよう</p>
+    </header>
+
+    <div class="game-body">
+      <!-- 左カラム: メイン対戦エリア -->
+      <section class="main-panel">
+        <div class="battle-arena">
+          <div class="hand-card">
+            <span class="player-tag">YOU</span>
+            <div class="hand-display" id="player-choice">❓</div>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="hand-card">
+            <span class="player-tag">CPU</span>
+            <div class="hand-display" id="computer-choice">❓</div>
+          </div>
+        </div>
+
+        <div class="result-box">
+          <p id="outcome" class="outcome default">ボタンを押してスタート</p>
+        </div>
+
+        <div class="btn-group">
+          <button class="choice-btn" onclick="playGame('✊')">
+            <span class="icon">✊</span>
+            <span class="text">グー</span>
+          </button>
+          <button class="choice-btn" onclick="playGame('✌️')">
+            <span class="icon">✌️</span>
+            <span class="text">チョキ</span>
+          </button>
+          <button class="choice-btn" onclick="playGame('🖐️')">
+            <span class="icon">🖐️</span>
+            <span class="text">パー</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 右カラム: スコア＆統計パネル -->
+      <aside class="side-panel">
+        <h2>対戦スコア</h2>
+        
+        <div class="score-grid">
+          <div class="score-card win">
+            <span class="label">勝ち</span>
+            <span class="count" id="win-count">0</span>
+          </div>
+          <div class="score-card draw">
+            <span class="label">引き分け</span>
+            <span class="count" id="draw-count">0</span>
+          </div>
+          <div class="score-card lose">
+            <span class="label">負け</span>
+            <span class="count" id="lose-count">0</span>
+          </div>
+        </div>
+
+        <button class="reset-btn" onclick="resetGame()">スコアをリセット</button>
+      </aside>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
